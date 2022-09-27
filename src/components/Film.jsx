@@ -11,7 +11,7 @@ const Film = ({ film }) => {
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation(
-    (id) => axios.delete(`http://localhost:4000/films/${id}`),
+    (id) => axios.delete(`${import.meta.env.VITE_BACKEND_URL}/films/${id}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries();

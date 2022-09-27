@@ -18,15 +18,9 @@ const fetchFilm = async ({ queryKey }) => {
 
 const EditFilm = () => {
   const { id } = useParams();
-  const {
-    data: films,
-    error,
-    isLoading,
-    isError,
-    status,
-  } = useQuery(["film", { id }], fetchFilm);
+  const { data: films, error, status } = useQuery(["film", { id }], fetchFilm);
   const mutation = useMutation((updatedFilm) =>
-    axios.put(`http://localhost:4000/films/${id}`, updatedFilm)
+    axios.put(`${import.meta.env.VITE_BACKEND_URL}/${id}`, updatedFilm)
   );
 
   const navigate = useNavigate();
